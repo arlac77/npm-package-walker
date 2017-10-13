@@ -18,7 +18,7 @@
 
 npm-package-walker
 ===
-walks local the npm package tree and calls a visitor function
+walks the local npm package tree and calls a visitor function
 
 
 <!-- skip-example -->
@@ -42,3 +42,16 @@ async function collectPackageNames() {
 
 collectPackageNames().then(names => console.log(names));
 ```
+
+
+# install
+
+With [npm](http://npmjs.org) do:
+
+```shell
+npm install package-walker
+```
+
+# license
+
+BSD-2-Clause
