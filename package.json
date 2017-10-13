@@ -1,0 +1,4 @@
+{
+  "name": "npm-package-walker",
+  "description": "walks the npm package tree and collects information fragments"
+}
