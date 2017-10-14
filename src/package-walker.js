@@ -8,8 +8,8 @@ const readFile = promisify(fs.readFile);
 * Walks the local package dependency tree and calls a visitor function
 * @param {string} base directory where to start crawling package.json
 * @param {function(object,string,number)} visitor to be called for each package
-* @param {string[]} dependencyTypes branch for dependency dev and/or prod
-* @param {number} level dependency nesting level
+* @param {string[]} dependencyTypes branch for dependency dev and/or prod defaults to dependencies and devDependencies
+* @param {number} level dependency nesting level statung with 0
 */
 export async function packageWalker(
   base,
