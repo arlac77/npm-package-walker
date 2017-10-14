@@ -21,7 +21,6 @@
   },
   "devDependencies": {
     "ava": "^0.22.0",
-    "babel-preset-latest": "^6.24.1",
     "jsdoc-babel": "^0.3.0",
     "jsdoc-to-markdown": "^3.0.0",
     "markdown-doctest": "^0.9.1",
