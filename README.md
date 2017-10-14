@@ -44,6 +44,11 @@ collectPackageNames().then(names => console.log(names));
 ```
 
 
+# API Reference
+- npm-package-walker
+
+
+
 # install
 
 With [npm](http://npmjs.org) do:

@@ -5,6 +5,10 @@ const exists = promisify(fs.exists);
 const readFile = promisify(fs.readFile);
 
 /**
+@module 'npm-package-walker'
+*/
+
+/**
 * Walks the local package dependency tree and calls a visitor function
 * @param {string} base directory where to start crawling package.json
 * @param {function(object,string,number)} visitor to be called for each package
