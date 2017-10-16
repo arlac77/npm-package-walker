@@ -29,11 +29,11 @@ async function collectPackageNames() {
   const names = new Set();
 
   await packageWalker(
-    process.cwd(),
-    (pkg, base, level) => {
+    async (pkg, base, level) => {
       names.add(pkg.name);
       return true;
     },
+    process.cwd(),
     ['dependencies']
   );
 
