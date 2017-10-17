@@ -10,7 +10,7 @@ const readFile = promisify(fs.readFile);
 
 /**
 * Walks the local package dependency tree and calls a visitor function.
-* The visitor function recives the decodec package.json, its directory, and the nesting level starting with 0 for the base package.
+* The visitor function recives the decoded package.json, its directory, and the nesting level starting with 0 for the base package.
 * Descending the dependency tree continues until the visitor function returns false or no more dependencies
 * are declared in a package.
 * @param {function(Object,string,number)} visitor async to be called for each package

@@ -18,7 +18,8 @@
 
 npm-package-walker
 ===
-walks the local npm package tree and calls a visitor function
+Walks down the local npm package dependency tree and calls a visitor function
+for each package.
 
 
 <!-- skip-example -->
@@ -52,7 +53,7 @@ collectPackageNames().then(names => console.log(names));
 
 ### npm-package-walker~packageWalker
 Walks the local package dependency tree and calls a visitor function.
-The visitor function recives the decodec package.json, its directory, and the nesting level starting with 0 for the base package.
+The visitor function recives the decoded package.json, its directory, and the nesting level starting with 0 for the base package.
 Descending the dependency tree continues until the visitor function returns false or no more dependencies
 are declared in a package.
 
