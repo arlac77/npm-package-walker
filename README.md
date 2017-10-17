@@ -45,7 +45,24 @@ collectPackageNames().then(names => console.log(names));
 
 
 # API Reference
-- npm-package-walker
+<a name="module_npm-package-walker"></a>
+
+## npm-package-walker
+<a name="module_npm-package-walker..packageWalker"></a>
+
+### npm-package-walker~packageWalker
+Walks the local package dependency tree and calls a visitor function.
+Descending the dependency tree continues until the visitor function returns false or no more dependencies
+are declared in a package.
+
+**Kind**: inner property of [<code>npm-package-walker</code>](#module_npm-package-walker)  
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| visitor | <code>function</code> |  | async to be called for each package |
+| [base] | <code>string</code> | <code>&quot;process.cwd()&quot;</code> | directory where to start crawling package.json |
+| [dependencyTypes] | <code>Array.&lt;string&gt;</code> | <code>[&#x27;dependencies&#x27;, &#x27;devDependencies&#x27;]</code> | dig into dependency dev and/or prod |
+| [level] | <code>number</code> | <code>0</code> | dependency nesting level |
 
 
 

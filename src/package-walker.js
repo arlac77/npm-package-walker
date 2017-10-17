@@ -5,16 +5,17 @@ const exists = promisify(fs.exists);
 const readFile = promisify(fs.readFile);
 
 /**
-@module 'npm-package-walker'
+* @module 'npm-package-walker'
 */
 
 /**
-* Walks the local package dependency tree and calls a visitor function
-* descending the dependency tree continues until the visitor function returns false.
+* Walks the local package dependency tree and calls a visitor function.
+* Descending the dependency tree continues until the visitor function returns false or no more dependencies
+* are declared in a package.
 * @param {function(object,string,number)} visitor async to be called for each package
-* @param {string} base directory where to start crawling package.json
-* @param {string[]} dependencyTypes branch for dependency dev and/or prod defaults to dependencies and devDependencies
-* @param {number} level dependency nesting level statung with 0
+* @param {string} [base=process.cwd()] directory where to start crawling package.json
+* @param {string[]} [dependencyTypes=['dependencies', 'devDependencies']] dig into dependency dev and/or prod
+* @param {number} [level=0] dependency nesting level
 */
 export async function packageWalker(
   visitor,
