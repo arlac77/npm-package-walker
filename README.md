@@ -52,6 +52,7 @@ collectPackageNames().then(names => console.log(names));
 
 ### npm-package-walker~packageWalker
 Walks the local package dependency tree and calls a visitor function.
+The visitor function recives the decodec package.json, its directory, and the nesting level starting with 0 for the base package.
 Descending the dependency tree continues until the visitor function returns false or no more dependencies
 are declared in a package.
 
@@ -62,7 +63,6 @@ are declared in a package.
 | visitor | <code>function</code> |  | async to be called for each package |
 | [base] | <code>string</code> | <code>&quot;process.cwd()&quot;</code> | directory where to start crawling package.json |
 | [dependencyTypes] | <code>Array.&lt;string&gt;</code> | <code>[&#x27;dependencies&#x27;, &#x27;devDependencies&#x27;]</code> | dig into dependency dev and/or prod |
-| [level] | <code>number</code> | <code>0</code> | dependency nesting level |
 
 
 
