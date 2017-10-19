@@ -27,3 +27,70 @@ test('walk dependencies', async t => {
   t.is(names.has('npm-package-walker'), true);
   t.is(names.has('mkdirp'), false);
 });
+
+test('walk devDependencies', async t => {
+  const names = new Set();
+  await packageWalker(
+    async (pkg, base, level) => {
+      names.add(pkg.name);
+      return true;
+    },
+    process.cwd(),
+    ['devDependencies']
+  );
+
+  t.deepEqual(
+    names,
+    new Set([
+      'npm-package-walker',
+      'ava',
+      'babel-preset-latest',
+      'jsdoc-babel',
+      'jsdoc-to-markdown',
+      'markdown-doctest',
+      'nyc',
+      'rollup',
+      'semantic-release',
+      'xo',
+      'chalk',
+      'archy',
+      'arrify',
+      'caching-transform',
+      'convert-source-map',
+      'debug-log',
+      'default-require-extensions',
+      'find-cache-dir',
+      'find-up',
+      'foreground-child',
+      'glob',
+      'istanbul-lib-coverage',
+      'istanbul-lib-hook',
+      'istanbul-lib-instrument',
+      'istanbul-lib-report',
+      'istanbul-lib-source-maps',
+      'istanbul-reports',
+      'md5-hex',
+      'merge-source-map',
+      'micromatch',
+      'mkdirp',
+      'resolve-from',
+      'rimraf',
+      'signal-exit',
+      'spawn-wrap',
+      'test-exclude',
+      'yargs',
+      'yargs-parser',
+      'execa',
+      'nopt',
+      'get-stdin',
+      'resolve-cwd',
+      'supports-color',
+      'camelcase',
+      'cliui',
+      'read-pkg-up',
+      'string-width'
+    ])
+  );
+
+  //  t.is(names.has('semver'), true);
+});

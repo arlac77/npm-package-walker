@@ -24,12 +24,13 @@ export async function packageWalker(
 ) {
   async function walker(base, level) {
     const pp = join(base, 'package.json');
+
     if (await exists(pp)) {
       const pkg = JSON.parse(await readFile(pp, { encoding: 'utf8' }));
 
       if (await visitor(pkg, base, level)) {
         return Promise.all(
-          dependencyTypes
+          (level > 0 ? ['dependencies'] : dependencyTypes)
             .map(dt => (pkg[dt] ? Object.keys(pkg[dt]) : []))
             .reduce((acc, val) => {
               acc.push(...val);
