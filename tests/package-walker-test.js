@@ -40,8 +40,8 @@ test('walk devDependencies', async t => {
   );
 
   t.deepEqual(
-    names,
-    new Set([
+    Array.from(names).sort(),
+    [
       'npm-package-walker',
       'ava',
       'babel-preset-latest',
@@ -89,7 +89,7 @@ test('walk devDependencies', async t => {
       'cliui',
       'read-pkg-up',
       'string-width'
-    ])
+    ].sort()
   );
 
   //  t.is(names.has('semver'), true);
