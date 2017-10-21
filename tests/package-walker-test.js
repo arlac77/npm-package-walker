@@ -4,7 +4,7 @@ import { packageWalker } from '../src/package-walker';
 
 test('walk devDependencies & dependencies', async t => {
   const names = new Set();
-  await packageWalker(async (pkg, base, level) => {
+  await packageWalker(async pkg => {
     names.add(pkg.name);
     return true;
   });
@@ -16,7 +16,7 @@ test('walk devDependencies & dependencies', async t => {
 test('walk dependencies', async t => {
   const names = new Set();
   await packageWalker(
-    async (pkg, base, level) => {
+    async pkg => {
       names.add(pkg.name);
       return true;
     },
@@ -31,7 +31,7 @@ test('walk dependencies', async t => {
 test('walk devDependencies', async t => {
   const names = new Set();
   await packageWalker(
-    async (pkg, base, level) => {
+    async pkg => {
       names.add(pkg.name);
       return true;
     },
@@ -91,6 +91,4 @@ test('walk devDependencies', async t => {
       'string-width'
     ].sort()
   );
-
-  //  t.is(names.has('semver'), true);
 });
