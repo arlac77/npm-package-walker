@@ -40,7 +40,12 @@ export async function packageWalker(
             .map(d => walker(join(base, 'node_modules', d), level + 1))
         );
       }
-    }
+    } /*else {
+      let parts = base.split('/');
+      parts.splice(parts.length - 4, 2);
+      console.log(pp);
+      console.log('>' + join(...parts));
+    }*/
   }
 
   return walker(base, 0);
