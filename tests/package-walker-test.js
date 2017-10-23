@@ -44,9 +44,8 @@ test('walk devDependencies', async t => {
     [
       'npm-package-walker',
       'ava',
-      'babel-preset-latest',
-      'jsdoc-babel',
       'jsdoc-to-markdown',
+      'jsdoc-babel',
       'markdown-doctest',
       'nyc',
       'rollup',
@@ -79,15 +78,15 @@ test('walk devDependencies', async t => {
       'spawn-wrap',
       'test-exclude',
       'yargs',
-      'yargs-parser',
       'execa',
+      'yargs-parser',
       'nopt',
       'get-stdin',
       'resolve-cwd',
       'supports-color',
-      'camelcase',
+      'debug',
       'cliui',
-      'read-pkg-up',
+      'camelcase',
       'string-width'
     ].sort()
   );
