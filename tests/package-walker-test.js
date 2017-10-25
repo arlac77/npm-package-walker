@@ -39,18 +39,22 @@ test('walk devDependencies', async t => {
     ['devDependencies']
   );
 
+  //console.log(JSON.stringify(Array.from(names), undefined, 2));
+
   t.deepEqual(
     Array.from(names).sort(),
     [
       'npm-package-walker',
+      'babel-preset-env',
       'ava',
-      'jsdoc-to-markdown',
       'jsdoc-babel',
+      'jsdoc-to-markdown',
       'markdown-doctest',
       'nyc',
       'rollup',
       'semantic-release',
       'xo',
+      'debug',
       'chalk',
       'archy',
       'arrify',
@@ -78,13 +82,12 @@ test('walk devDependencies', async t => {
       'spawn-wrap',
       'test-exclude',
       'yargs',
-      'execa',
       'yargs-parser',
+      'execa',
       'nopt',
       'get-stdin',
       'resolve-cwd',
       'supports-color',
-      'debug',
       'cliui',
       'camelcase',
       'string-width'
