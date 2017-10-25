@@ -1,6 +1,6 @@
 {
   "plugins": ["node_modules/jsdoc-babel"],
   "babel": {
-    "presets": ["latest"]
+    "presets": ["env"]
   }
 }

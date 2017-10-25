@@ -21,6 +21,7 @@
   },
   "devDependencies": {
     "ava": "^0.23.0",
+    "babel-preset-env": "^1.6.1",
     "jsdoc-babel": "^0.3.0",
     "jsdoc-to-markdown": "^3.0.0",
     "markdown-doctest": "^0.9.1",
@@ -54,7 +55,7 @@
       "build/*-test.js"
     ],
     "presets": [
-      "stage-3"
+      "env"
     ],
     "require": [
       "babel-register"
