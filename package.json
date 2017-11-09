@@ -10,7 +10,7 @@
   },
   "homepage": "https://github.com/arlac77/npm-package-walker#readme",
   "scripts": {
-    "cover": "nyc ava",
+    "cover": "nyc --temp-directory build/nyc ava",
     "precover": "rollup -c tests/rollup.config.js",
     "test": "ava",
     "pretest": "rollup -c tests/rollup.config.js",
