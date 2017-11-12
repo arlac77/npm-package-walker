@@ -16,12 +16,17 @@ const readFile = promisify(fs.readFile);
 * are declared in a package.
 * @param {function(Object,string,number)} visitor async to be called for each package
 * @param {string} [base=process.cwd()] directory where to start crawling package.json
-* @param {string[]} [dependencyTypes=['dependencies', 'devDependencies','optionalDependencies']] dig into dependency dev and/or prod
+* @param {string[]} [dependencyTypes=['dependencies', 'devDependencies','optionalDependencies','peerDependencies']] dig into dependency dev and/or prod
 */
 export async function packageWalker(
   visitor,
   base = process.cwd(),
-  dependencyTypes = ['dependencies', 'devDependencies', 'optionalDependencies']
+  dependencyTypes = [
+    'dependencies',
+    'devDependencies',
+    'optionalDependencies',
+    'peerDependencies'
+  ]
 ) {
   async function walker(base, level) {
     const pp = join(base, 'package.json');
