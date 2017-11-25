@@ -46,24 +46,52 @@ collectPackageNames().then(names => console.log(names));
 
 
 # API Reference
+## Modules
+
+<dl>
+<dt><a href="#module_npm-package-walker">npm-package-walker</a></dt>
+<dd></dd>
+</dl>
+
+## Members
+
+<dl>
+<dt><a href="#packageWalker">packageWalker</a></dt>
+<dd><p>Walks the local package dependency tree and calls a visitor function.
+The visitor function recives the decoded package.json, its directory, and the nesting level starting with 0 for the base package.
+Descending the dependency tree continues until the visitor function returns false or no more dependencies
+are declared in a package.</p>
+</dd>
+</dl>
+
 <a name="module_npm-package-walker"></a>
 
 ## npm-package-walker
-<a name="module_npm-package-walker..packageWalker"></a>
+<a name="module_npm-package-walker..defaultDependencyTypes"></a>
 
-### npm-package-walker~packageWalker
+### npm-package-walker~defaultDependencyTypes
+dependency types used by default
+- dependencies
+- devDependencies
+- optionalDependencies
+- peerDependencies
+
+**Kind**: inner property of [<code>npm-package-walker</code>](#module_npm-package-walker)  
+<a name="packageWalker"></a>
+
+## packageWalker
 Walks the local package dependency tree and calls a visitor function.
 The visitor function recives the decoded package.json, its directory, and the nesting level starting with 0 for the base package.
 Descending the dependency tree continues until the visitor function returns false or no more dependencies
 are declared in a package.
 
-**Kind**: inner property of [<code>npm-package-walker</code>](#module_npm-package-walker)  
+**Kind**: global variable  
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
 | visitor | <code>function</code> |  | async to be called for each package |
 | [base] | <code>string</code> | <code>&quot;process.cwd()&quot;</code> | directory where to start crawling package.json |
-| [dependencyTypes] | <code>Array.&lt;string&gt;</code> | <code>[&#x27;dependencies&#x27;, &#x27;devDependencies&#x27;]</code> | dig into dependency dev and/or prod |
+| [dependencyTypes] | <code>Array.&lt;string&gt;</code> | <code>defaultDependencyTypes</code> | dig into dependency dev and/or prod |
 
 
 

@@ -6,27 +6,36 @@ const exists = promisify(fs.exists);
 const readFile = promisify(fs.readFile);
 
 /**
-* @module 'npm-package-walker'
-*/
+ * @module 'npm-package-walker'
+ */
 
 /**
-* Walks the local package dependency tree and calls a visitor function.
-* The visitor function recives the decoded package.json, its directory, and the nesting level starting with 0 for the base package.
-* Descending the dependency tree continues until the visitor function returns false or no more dependencies
-* are declared in a package.
-* @param {function(Object,string,number)} visitor async to be called for each package
-* @param {string} [base=process.cwd()] directory where to start crawling package.json
-* @param {string[]} [dependencyTypes=['dependencies', 'devDependencies','optionalDependencies','peerDependencies']] dig into dependency dev and/or prod
-*/
+ * dependency types used by default
+ * - dependencies
+ * - devDependencies
+ * - optionalDependencies
+ * - peerDependencies
+ */
+export const defaultDependencyTypes = [
+  'dependencies',
+  'devDependencies',
+  'optionalDependencies',
+  'peerDependencies'
+];
+
+/**
+ * Walks the local package dependency tree and calls a visitor function.
+ * The visitor function recives the decoded package.json, its directory, and the nesting level starting with 0 for the base package.
+ * Descending the dependency tree continues until the visitor function returns false or no more dependencies
+ * are declared in a package.
+ * @param {function(Object,string,number)} visitor async to be called for each package
+ * @param {string} [base=process.cwd()] directory where to start crawling package.json
+ * @param {string[]} [dependencyTypes=defaultDependencyTypes] dig into dependency dev and/or prod
+ */
 export async function packageWalker(
   visitor,
   base = process.cwd(),
-  dependencyTypes = [
-    'dependencies',
-    'devDependencies',
-    'optionalDependencies',
-    'peerDependencies'
-  ]
+  dependencyTypes = defaultDependencyTypes
 ) {
   async function walker(base, level) {
     const pp = join(base, 'package.json');
