@@ -53,6 +53,7 @@ test('walk devDependencies', async t => {
       'rollup',
       'semantic-release',
       'xo',
+      'babel-preset-env',
       'chalk',
       'archy',
       'arrify',
@@ -86,8 +87,8 @@ test('walk devDependencies', async t => {
       'get-stdin',
       'resolve-cwd',
       'supports-color',
-      'cliui',
       'camelcase',
+      'cliui',
       'string-width'
     ].sort()
   );
