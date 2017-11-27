@@ -54,6 +54,9 @@ test('walk devDependencies', async t => {
       'semantic-release',
       'xo',
       'babel-preset-env',
+      'ansi-escapes',
+      'source-map-support',
+      'supports-color',
       'chalk',
       'archy',
       'arrify',
@@ -86,9 +89,8 @@ test('walk devDependencies', async t => {
       'debug',
       'get-stdin',
       'resolve-cwd',
-      'supports-color',
-      'camelcase',
       'cliui',
+      'camelcase',
       'string-width'
     ].sort()
   );
