@@ -83,6 +83,7 @@ test('walk devDependencies', async t => {
       'yargs',
       'yargs-parser',
       'execa',
+      'read-pkg-up',
       'debug',
       'get-stdin',
       'resolve-cwd',
