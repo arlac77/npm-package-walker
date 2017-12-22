@@ -6,10 +6,6 @@ const exists = promisify(fs.exists);
 const readFile = promisify(fs.readFile);
 
 /**
- * @module 'npm-package-walker'
- */
-
-/**
  * dependency types used by default
  * - dependencies
  * - devDependencies
