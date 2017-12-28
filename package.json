@@ -1,14 +1,19 @@
 {
   "name": "npm-package-walker",
+  "version": "0.0.0-semantic-release",
+  "main": "dist/package-walker.js",
+  "module": "src/package-walker.js",
   "description": "Walks down the local npm package dependency tree and calls a visitor function for each package",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/arlac77/npm-package-walker.git"
-  },
-  "bugs": {
-    "url": "https://github.com/arlac77/npm-package-walker/issues"
-  },
-  "homepage": "https://github.com/arlac77/npm-package-walker#readme",
+  "keywords": [
+    "dependecy"
+  ],
+  "contributors": [
+    {
+      "name": "Markus Felten",
+      "email": "markus.felten@gmx.de"
+    }
+  ],
+  "license": "BSD-2-Clause",
   "scripts": {
     "cover": "nyc --temp-directory build/nyc ava",
     "precover": "rollup -c tests/rollup.config.js",
@@ -20,6 +25,7 @@
     "semantic-release": "semantic-release",
     "lint": "documentation lint src/package-walker.js"
   },
+  "dependencies": {},
   "devDependencies": {
     "ava": "^0.24.0",
     "markdown-doctest": "^0.9.1",
@@ -32,23 +38,14 @@
   "engines": {
     "node": ">=8.9.3"
   },
-  "version": "0.0.0-semantic-release",
-  "main": "dist/package-walker.js",
-  "module": "src/package-walker.js",
-  "keywords": [
-    "dependecy"
-  ],
-  "dependencies": {},
-  "contributors": [
-    {
-      "name": "Markus Felten",
-      "email": "markus.felten@gmx.de"
-    }
-  ],
-  "license": "BSD-2-Clause",
-  "xo": {
-    "space": true
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/arlac77/npm-package-walker.git"
   },
+  "bugs": {
+    "url": "https://github.com/arlac77/npm-package-walker/issues"
+  },
+  "homepage": "https://github.com/arlac77/npm-package-walker#readme",
   "ava": {
     "files": [
       "build/*-test.js"
@@ -68,6 +65,9 @@
       "lcov"
     ],
     "report-dir": "./build/coverage"
+  },
+  "xo": {
+    "space": true
   },
   "template": {
     "repository": {
