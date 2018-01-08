@@ -52,6 +52,7 @@ collectPackageNames().then(names => console.log(names));
 ### Table of Contents
 
 -   [defaultDependencyTypes](#defaultdependencytypes)
+-   [packageVisitor](#packagevisitor)
 -   [packageWalker](#packagewalker)
 
 ## defaultDependencyTypes
@@ -63,6 +64,16 @@ dependency types used by default
 -   optionalDependencies
 -   peerDependencies
 
+## packageVisitor
+
+Type: [Function](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function)
+
+**Parameters**
+
+-   `package` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** 
+-   `directory` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** 
+-   `nestingLevel` **[number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** 
+
 ## packageWalker
 
 Walks the local package dependency tree and calls a visitor function.
@@ -72,9 +83,11 @@ are declared in a package.
 
 **Parameters**
 
--   `visitor` **function ([Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object), [string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String), [number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number))** async to be called for each package
+-   `visitor` **[packageVisitor](#packagevisitor)** async to be called for each package
 -   `base` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** directory where to start crawling package.json (optional, default `process.cwd()`)
 -   `dependencyTypes` **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)>** dig into dependency dev and/or prod (optional, default `defaultDependencyTypes`)
+
+Returns **[Promise](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)** when resolving to true further dig into the dependencies
 
 # install
 
