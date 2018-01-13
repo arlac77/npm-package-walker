@@ -21,9 +21,10 @@ export const defaultDependencyTypes = [
 
 /**
  * @callback packageVisitor
- * @param {Object} package
- * @param {string} directory
+ * @param {Object} package package.json content
+ * @param {string} directory package base dir
  * @param {number} nestingLevel
+ * @return {Promise<boolean>} true to continue traversing dependencies of this package
  */
 
 /**
@@ -34,7 +35,7 @@ export const defaultDependencyTypes = [
  * @param {packageVisitor} visitor async to be called for each package
  * @param {string} base directory where to start crawling package.json
  * @param {string[]} dependencyTypes dig into dependency dev and/or prod
- * @return {Promise} when resolving to true further dig into the dependencies
+ * @return {Promise<boolean>} when resolving to true further dig into the dependencies
  */
 export async function packageWalker(
   visitor,
