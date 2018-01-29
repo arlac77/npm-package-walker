@@ -73,11 +73,6 @@
   "template": {
     "repository": {
       "url": "https://github.com/arlac77/npm-package-template.git"
-    },
-    "badges": {
-      "Maintainability": {
-        "id": "15cd579a3cc8090fb1d7"
-      }
     }
   }
 }
