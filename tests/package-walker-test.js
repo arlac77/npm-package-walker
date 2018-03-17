@@ -29,68 +29,31 @@ test('walk dependencies', async t => {
 });
 
 test('walk devDependencies', async t => {
-  const names = new Set();
+  const detected = new Map();
   await packageWalker(
-    async pkg => {
-      names.add(pkg.name);
+    async (pkg, base, level) => {
+      detected.set(pkg.name, level);
       return true;
     },
     process.cwd(),
     ['devDependencies']
   );
 
-  //console.log(JSON.stringify(Array.from(names), undefined, 2));
+  const expected = {
+    'npm-package-walker': 0,
+    ava: 1,
+    nyc: 1,
+    rollup: 1,
+    'markdown-doctest': 1,
+    'semantic-release': 1,
+    documentation: 1,
+    'travis-deploy-once': 1,
+    glob: 2,
+    micromatch: 3,
+    camelcase: 3
+  };
 
-  t.deepEqual(
-    Array.from(names).sort(),
-    [
-      'npm-package-walker',
-      'ava',
-      'markdown-doctest',
-      'nyc',
-      'rollup',
-      'semantic-release',
-      'documentation',
-      'travis-deploy-once',
-      'chalk',
-      'archy',
-      'arrify',
-      'caching-transform',
-      'convert-source-map',
-      'debug-log',
-      'default-require-extensions',
-      'find-cache-dir',
-      'find-up',
-      'foreground-child',
-      'glob',
-      'istanbul-lib-coverage',
-      'istanbul-lib-hook',
-      'istanbul-lib-instrument',
-      'istanbul-lib-report',
-      'istanbul-lib-source-maps',
-      'istanbul-reports',
-      'md5-hex',
-      'merge-source-map',
-      'micromatch',
-      'mkdirp',
-      'resolve-from',
-      'rimraf',
-      'signal-exit',
-      'spawn-wrap',
-      'test-exclude',
-      'yargs',
-      'yargs-parser',
-      'date-time',
-      'execa',
-      'read-pkg-up',
-      'chokidar',
-      'pify',
-      'got',
-      'supports-color',
-      'debug',
-      'source-map',
-      'cliui',
-      'camelcase'
-    ].sort()
-  );
+  Object.keys(expected).forEach(e => {
+    t.is(detected.get(e), expected[e], `${e}:${expected[e]}`);
+  });
 });
