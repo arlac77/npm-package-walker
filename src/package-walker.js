@@ -1,9 +1,9 @@
-const fs = require('fs');
-const { join } = require('path');
-const { promisify } = require('util');
+import { promisify } from 'util';
+import { join } from 'path';
+import { exists, readFile } from 'fs';
 
-const exists = promisify(fs.exists);
-const readFile = promisify(fs.readFile);
+const asyncExists = promisify(exists);
+const asyncReadFile = promisify(readFile);
 
 /**
  * dependency types used by default
@@ -23,7 +23,7 @@ export const defaultDependencyTypes = [
  * @callback packageVisitor
  * @param {Object} package package.json content
  * @param {string} directory package base dir
- * @param {number} nestingLevel
+ * @param {number} nestingLevel how deep in the dependency tree are we
  * @return {Promise<boolean>} true to continue traversing dependencies of this package
  */
 
@@ -45,8 +45,8 @@ export async function packageWalker(
   async function walker(base, level) {
     const pp = join(base, 'package.json');
 
-    if (await exists(pp)) {
-      const pkg = JSON.parse(await readFile(pp, { encoding: 'utf8' }));
+    if (await asyncExists(pp)) {
+      const pkg = JSON.parse(await asyncReadFile(pp, { encoding: 'utf8' }));
 
       if (await visitor(pkg, base, level)) {
         return Promise.all(
