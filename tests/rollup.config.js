@@ -5,5 +5,5 @@ export default {
     format: 'cjs',
     sourcemap: true
   },
-  external: ['ava']
+  external: ['ava', 'path', 'fs', 'util']
 };

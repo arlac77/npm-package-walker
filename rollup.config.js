@@ -5,5 +5,6 @@ export default {
   output: {
     file: pkg.main,
     format: 'cjs'
-  }
+  },
+  external: ['path', 'fs', 'util']
 };
