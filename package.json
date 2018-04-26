@@ -3,10 +3,9 @@
   "version": "0.0.0-semantic-release",
   "main": "dist/package-walker.js",
   "module": "src/package-walker.js",
-  "description": "Walks down the local npm package dependency tree and calls a visitor function for each package",
-  "keywords": [
-    "dependecy"
-  ],
+  "description":
+    "Walks down the local npm package dependency tree and calls a visitor function for each package",
+  "keywords": ["dependecy"],
   "contributors": [
     {
       "name": "Markus Felten",
@@ -48,23 +47,13 @@
   },
   "homepage": "https://github.com/arlac77/npm-package-walker#readme",
   "ava": {
-    "files": [
-      "build/*-test.js"
-    ],
-    "presets": [
-      "env"
-    ],
-    "require": [
-      "babel-register"
-    ]
+    "files": ["build/*-test.js"],
+    "presets": ["env"],
+    "require": ["babel-register"]
   },
   "nyc": {
-    "include": [
-      "build/*-test.js"
-    ],
-    "reporter": [
-      "lcov"
-    ],
+    "include": ["build/*-test.js"],
+    "reporter": ["lcov"],
     "report-dir": "./build/coverage"
   },
   "xo": {
@@ -74,10 +63,17 @@
     "repository": {
       "url": "https://github.com/arlac77/npm-package-template.git"
     },
-    "badges": {
-      "Maintainability": {
-        "id": "15cd579a3cc8090fb1d7"
+    "files": [
+      {
+        "merger": "Readme",
+        "options": {
+          "badges": {
+            "Maintainability": {
+              "id": "15cd579a3cc8090fb1d7"
+            }
+          }
+        }
       }
-    }
+    ]
   }
 }
