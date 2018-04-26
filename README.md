@@ -6,7 +6,6 @@
 [![bithound](https://www.bithound.io/github/arlac77/npm-package-walker/badges/score.svg)](https://www.bithound.io/github/arlac77/npm-package-walker)
 [![codecov.io](http://codecov.io/github/arlac77/npm-package-walker/coverage.svg?branch=master)](http://codecov.io/github/arlac77/npm-package-walker?branch=master)
 [![Coverage Status](https://coveralls.io/repos/arlac77/npm-package-walker/badge.svg)](https://coveralls.io/r/arlac77/npm-package-walker)
-[![Maintainability](https://api.codeclimate.com/v1/badges/15cd579a3cc8090fb1d7/maintainability)](https://codeclimate.com/github/arlac77/npm-package-walker/maintainability)
 [![Known Vulnerabilities](https://snyk.io/test/github/arlac77/npm-package-walker/badge.svg)](https://snyk.io/test/github/arlac77/npm-package-walker)
 [![GitHub Issues](https://img.shields.io/github/issues/arlac77/npm-package-walker.svg?style=flat-square)](https://github.com/arlac77/npm-package-walker/issues)
 [![Stories in Ready](https://badge.waffle.io/arlac77/npm-package-walker.svg?label=ready&title=Ready)](http://waffle.io/arlac77/npm-package-walker)
