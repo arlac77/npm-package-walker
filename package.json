@@ -3,9 +3,10 @@
   "version": "0.0.0-semantic-release",
   "main": "dist/package-walker.js",
   "module": "src/package-walker.js",
-  "description":
-    "Walks down the local npm package dependency tree and calls a visitor function for each package",
-  "keywords": ["dependecy"],
+  "description": "Walks down the local npm package dependency tree and calls a visitor function for each package",
+  "keywords": [
+    "dependecy"
+  ],
   "contributors": [
     {
       "name": "Markus Felten",
@@ -32,7 +33,7 @@
     "nyc": "^11.7.1",
     "rollup": "^0.58.2",
     "semantic-release": "^15.1.7",
-    "documentation": "^6.3.1",
+    "documentation": "^6.3.2",
     "travis-deploy-once": "^4.4.1"
   },
   "engines": {
@@ -47,13 +48,23 @@
   },
   "homepage": "https://github.com/arlac77/npm-package-walker#readme",
   "ava": {
-    "files": ["build/*-test.js"],
-    "presets": ["env"],
-    "require": ["babel-register"]
+    "files": [
+      "build/*-test.js"
+    ],
+    "presets": [
+      "env"
+    ],
+    "require": [
+      "babel-register"
+    ]
   },
   "nyc": {
-    "include": ["build/*-test.js"],
-    "reporter": ["lcov"],
+    "include": [
+      "build/*-test.js"
+    ],
+    "reporter": [
+      "lcov"
+    ],
     "report-dir": "./build/coverage"
   },
   "xo": {
