@@ -32,7 +32,7 @@
     "markdown-doctest": "^0.9.1",
     "nyc": "^11.7.3",
     "rollup": "^0.58.2",
-    "semantic-release": "^15.4.0",
+    "semantic-release": "^15.4.1",
     "documentation": "^6.3.2",
     "travis-deploy-once": "^5.0.0"
   },
