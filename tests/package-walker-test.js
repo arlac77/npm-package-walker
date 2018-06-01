@@ -49,7 +49,7 @@ test('walk devDependencies', async t => {
     documentation: 1,
     'travis-deploy-once': 1,
     glob: 2,
-    micromatch: 3,
+    //    micromatch: 3,
     camelcase: 3
   };
 
