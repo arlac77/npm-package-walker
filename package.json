@@ -1,6 +1,9 @@
 {
   "name": "npm-package-walker",
   "version": "0.0.0-semantic-release",
+  "publishConfig": {
+    "access": "public"
+  },
   "main": "dist/package-walker.js",
   "module": "src/package-walker.js",
   "description": "Walks down the local npm package dependency tree and calls a visitor function for each package",
