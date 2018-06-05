@@ -52,7 +52,9 @@ collectPackageNames().then(names => console.log(names));
 
 -   [defaultDependencyTypes](#defaultdependencytypes)
 -   [packageVisitor](#packagevisitor)
+    -   [Parameters](#parameters)
 -   [packageWalker](#packagewalker)
+    -   [Parameters](#parameters-1)
 
 ## defaultDependencyTypes
 
@@ -67,7 +69,7 @@ dependency types used by default
 
 Type: [Function](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function)
 
-**Parameters**
+### Parameters
 
 -   `package` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** package.json content
 -   `directory` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** package base dir
@@ -82,7 +84,7 @@ The visitor function recives the decoded package.json, its directory, and the ne
 Descending the dependency tree continues until the visitor function returns false or no more dependencies
 are declared in a package.
 
-**Parameters**
+### Parameters
 
 -   `visitor` **[packageVisitor](#packagevisitor)** async to be called for each package
 -   `base` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** directory where to start crawling package.json (optional, default `process.cwd()`)
