@@ -37,7 +37,7 @@
     "rollup": "^0.62.0",
     "semantic-release": "^15.6.0",
     "documentation": "^8.0.0",
-    "travis-deploy-once": "^5.0.0"
+    "travis-deploy-once": "^5.0.1"
   },
   "engines": {
     "node": ">=8.11"
