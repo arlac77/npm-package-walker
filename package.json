@@ -35,8 +35,8 @@
     "markdown-doctest": "^0.9.1",
     "nyc": "^13.0.0",
     "rollup": "^0.62.0",
-    "semantic-release": "^15.7.1",
-    "documentation": "^8.0.0",
+    "semantic-release": "^15.7.2",
+    "documentation": "^8.0.1",
     "travis-deploy-once": "^5.0.1"
   },
   "engines": {
