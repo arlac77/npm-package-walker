@@ -8,7 +8,8 @@ export default {
   output: {
     file: 'build/package-walker-test.js',
     format: 'cjs',
-    sourcemap: true
+    sourcemap: true,
+    interop: false
   },
   external: ['ava', 'path', 'fs', 'util']
 };
