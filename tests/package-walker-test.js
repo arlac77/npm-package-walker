@@ -10,7 +10,7 @@ test('walk devDependencies & dependencies', async t => {
   });
 
   t.is(names.has('npm-package-walker'), true);
-  t.is(names.has('mkdirp'), true);
+  t.is(names.has('rollup'), true);
 });
 
 test('walk dependencies', async t => {
@@ -25,7 +25,7 @@ test('walk dependencies', async t => {
   );
 
   t.is(names.has('npm-package-walker'), true);
-  t.is(names.has('mkdirp'), false);
+  t.is(names.has('rollup'), false);
 });
 
 test('walk devDependencies', async t => {
@@ -49,7 +49,6 @@ test('walk devDependencies', async t => {
     documentation: 1,
     'travis-deploy-once': 1,
     glob: 2,
-    //    micromatch: 3,
     camelcase: 3
   };
 

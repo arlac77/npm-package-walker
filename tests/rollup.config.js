@@ -1,15 +1,23 @@
+import multiEntry from 'rollup-plugin-multi-entry';
+import resolve from 'rollup-plugin-node-resolve';
+import commonjs from 'rollup-plugin-commonjs';
 import istanbul from 'rollup-plugin-istanbul';
 
-import multiEntry from 'rollup-plugin-multi-entry';
-import commonjs from 'rollup-plugin-commonjs';
-import resolve from 'rollup-plugin-node-resolve';
 export default {
-  input: 'tests/package-walker-test.js',
+  input: 'tests/**/*-test.js',
   output: {
-    file: 'build/package-walker-test.js',
+    file: 'build/bundle-test.js',
     format: 'cjs',
     sourcemap: true,
     interop: false
   },
-  external: ['ava', 'path', 'fs', 'util']
+  external: ['ava', 'fs', 'util', 'path'],
+  plugins: [
+    multiEntry(),
+    resolve(),
+    commonjs(),
+    istanbul({
+      exclude: ['tests/**/*-test.js', 'node_modules/**/*']
+    })
+  ]
 };
