@@ -2,6 +2,17 @@ import test from 'ava';
 
 import { packageWalker } from '../src/package-walker';
 
+test('walk terminate early', async t => {
+  const names = new Set();
+  await packageWalker(async pkg => {
+    names.add(pkg.name);
+    return false;
+  });
+
+  t.is(names.has('npm-package-walker'), true);
+  t.is(names.has('rollup'), false);
+});
+
 test('walk devDependencies & dependencies', async t => {
   const names = new Set();
   await packageWalker(async pkg => {
