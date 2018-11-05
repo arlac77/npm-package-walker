@@ -1,30 +1,45 @@
-import test from 'ava';
+import test from "ava";
 
-import { packageWalker } from '../src/package-walker';
+import { packageWalker } from "../src/package-walker";
 
-test('walk terminate early', async t => {
+test("walk terminate early", async t => {
   const names = new Set();
   await packageWalker(async pkg => {
     names.add(pkg.name);
     return false;
   });
 
-  t.is(names.has('npm-package-walker'), true);
-  t.is(names.has('rollup'), false);
+  t.is(names.has("npm-package-walker"), true);
+  t.is(names.has("rollup"), false);
 });
 
-test('walk devDependencies & dependencies', async t => {
+test.only("walk with exception", async t => {
+  const names = new Set();
+
+  await t.throwsAsync(
+    async () =>
+      packageWalker(async pkg => {
+        names.add(pkg.name);
+        throw new Error(`something went wrong`);
+        return false;
+      }),
+    Error,
+    "something went wrong"
+  );
+});
+
+test("walk devDependencies & dependencies", async t => {
   const names = new Set();
   await packageWalker(async pkg => {
     names.add(pkg.name);
     return true;
   });
 
-  t.is(names.has('npm-package-walker'), true);
-  t.is(names.has('rollup'), true);
+  t.is(names.has("npm-package-walker"), true);
+  t.is(names.has("rollup"), true);
 });
 
-test('walk dependencies', async t => {
+test("walk dependencies", async t => {
   const names = new Set();
   await packageWalker(
     async pkg => {
@@ -32,14 +47,14 @@ test('walk dependencies', async t => {
       return true;
     },
     process.cwd(),
-    ['dependencies']
+    ["dependencies"]
   );
 
-  t.is(names.has('npm-package-walker'), true);
-  t.is(names.has('rollup'), false);
+  t.is(names.has("npm-package-walker"), true);
+  t.is(names.has("rollup"), false);
 });
 
-test('walk devDependencies', async t => {
+test("walk devDependencies", async t => {
   const detected = new Map();
   await packageWalker(
     async (pkg, base, level) => {
@@ -47,18 +62,18 @@ test('walk devDependencies', async t => {
       return true;
     },
     process.cwd(),
-    ['devDependencies']
+    ["devDependencies"]
   );
 
   const expected = {
-    'npm-package-walker': 0,
+    "npm-package-walker": 0,
     ava: 1,
     nyc: 1,
     rollup: 1,
-    'markdown-doctest': 1,
-    'semantic-release': 1,
+    "markdown-doctest": 1,
+    "semantic-release": 1,
     documentation: 1,
-    'travis-deploy-once': 1,
+    "travis-deploy-once": 1,
     glob: 2,
     camelcase: 3
   };

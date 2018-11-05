@@ -1,6 +1,6 @@
-import { promisify } from 'util';
-import { join } from 'path';
-import { exists, readFile } from 'fs';
+import { promisify } from "util";
+import { join } from "path";
+import { exists, readFile } from "fs";
 
 const asyncExists = promisify(exists);
 const asyncReadFile = promisify(readFile);
@@ -13,10 +13,10 @@ const asyncReadFile = promisify(readFile);
  * - peerDependencies
  */
 export const defaultDependencyTypes = [
-  'dependencies',
-  'devDependencies',
-  'optionalDependencies',
-  'peerDependencies'
+  "dependencies",
+  "devDependencies",
+  "optionalDependencies",
+  "peerDependencies"
 ];
 
 /**
@@ -43,28 +43,23 @@ export async function packageWalker(
   dependencyTypes = defaultDependencyTypes
 ) {
   async function walker(base, level) {
-    const pp = join(base, 'package.json');
+    const pp = join(base, "package.json");
 
     if (await asyncExists(pp)) {
-      const pkg = JSON.parse(await asyncReadFile(pp, { encoding: 'utf8' }));
+      const pkg = JSON.parse(await asyncReadFile(pp, { encoding: "utf8" }));
 
       if (await visitor(pkg, base, level)) {
         return Promise.all(
-          (level > 0 ? ['dependencies'] : dependencyTypes)
+          (level > 0 ? ["dependencies"] : dependencyTypes)
             .map(dt => (pkg[dt] ? Object.keys(pkg[dt]) : []))
             .reduce((acc, val) => {
               acc.push(...val);
               return acc;
             }, [])
-            .map(d => walker(join(base, 'node_modules', d), level + 1))
+            .map(d => walker(join(base, "node_modules", d), level + 1))
         );
       }
-    } /*else {
-      let parts = base.split('/');
-      parts.splice(parts.length - 4, 2);
-      console.log(pp);
-      console.log('>' + join(...parts));
-    }*/
+    }
   }
 
   return walker(base, 0);
