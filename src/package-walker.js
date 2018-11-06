@@ -64,7 +64,6 @@ export async function packageWalker(
       const pp = join(dir, "package.json");
 
       if (await asyncExists(pp)) {
-        console.log(packagePath);
         const pkg = JSON.parse(await asyncReadFile(pp, { encoding: "utf8" }));
 
         if (await visitor(pkg, dir, packagePath.length)) {
