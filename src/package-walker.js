@@ -42,25 +42,47 @@ export async function packageWalker(
   base = process.cwd(),
   dependencyTypes = defaultDependencyTypes
 ) {
-  async function walker(base, level) {
-    const pp = join(base, "package.json");
+  const seenBefore = new Set();
 
-    if (await asyncExists(pp)) {
-      const pkg = JSON.parse(await asyncReadFile(pp, { encoding: "utf8" }));
-
-      if (await visitor(pkg, base, level)) {
-        return Promise.all(
-          (level > 0 ? ["dependencies"] : dependencyTypes)
-            .map(dt => (pkg[dt] ? Object.keys(pkg[dt]) : []))
-            .reduce((acc, val) => {
-              acc.push(...val);
-              return acc;
-            }, [])
-            .map(d => walker(join(base, "node_modules", d), level + 1))
-        );
-      }
-    }
+  function modulePath(packagePath) {
+    return packagePath.reduce((acc, cur) => {
+      acc.push("node_modules", cur);
+      return acc;
+    }, []);
   }
 
-  return walker(base, 0);
+  async function walker(packagePath) {
+    while (true) {
+      const dir = join(base, ...modulePath(packagePath));
+
+      if (seenBefore.has(dir)) {
+        return;
+      }
+
+      seenBefore.add(dir);
+
+      const pp = join(dir, "package.json");
+
+      if (await asyncExists(pp)) {
+        console.log(packagePath);
+        const pkg = JSON.parse(await asyncReadFile(pp, { encoding: "utf8" }));
+
+        if (await visitor(pkg, dir, packagePath.length)) {
+          return Promise.all(
+            (packagePath.length > 0 ? ["dependencies"] : dependencyTypes)
+              .map(dt => (pkg[dt] ? Object.keys(pkg[dt]) : []))
+              .reduce((acc, val) => {
+                acc.push(...val);
+                return acc;
+              }, [])
+              .map(d => walker([...packagePath, d]))
+          );
+        }
+
+        return;
+      }
+      packagePath.pop();
+    }
+  }
+  return walker([]);
 }

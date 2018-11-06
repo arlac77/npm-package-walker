@@ -13,7 +13,7 @@ test("walk terminate early", async t => {
   t.is(names.has("rollup"), false);
 });
 
-test.only("walk with exception", async t => {
+test("walk with exception", async t => {
   const names = new Set();
 
   await t.throwsAsync(
