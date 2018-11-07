@@ -75,7 +75,7 @@ test("walk devDependencies", async t => {
     documentation: 1,
     "travis-deploy-once": 1,
     glob: 2,
-    camelcase: 3
+    camelcase: 2
   };
 
   Object.keys(expected).forEach(e => {

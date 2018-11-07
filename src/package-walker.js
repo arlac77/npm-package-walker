@@ -80,7 +80,7 @@ export async function packageWalker(
 
         return;
       }
-      packagePath.pop();
+      packagePath.splice(packagePath.length - 2, 1);
     }
   }
   return walker([]);
