@@ -24,7 +24,7 @@ for each package.
 <!-- skip-example -->
 
 ```js
-import { packageWalker } from 'package-walker';
+import { packageWalker } from "package-walker";
 
 async function collectPackageNames() {
   const names = new Set();
@@ -35,7 +35,7 @@ async function collectPackageNames() {
       return true;
     },
     process.cwd(),
-    ['dependencies']
+    ["dependencies"]
   );
 
   return names;
@@ -97,7 +97,7 @@ Returns **[Promise](https://developer.mozilla.org/docs/Web/JavaScript/Reference/
 With [npm](http://npmjs.org) do:
 
 ```shell
-npm install package-walker
+npm install npm-package-walker
 ```
 
 # license
