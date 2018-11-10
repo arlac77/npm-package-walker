@@ -55,12 +55,15 @@
   },
   "homepage": "https://github.com/arlac77/npm-package-walker#readme",
   "ava": {
+    "require": [
+      "esm"
+    ],
+    "babel": false,
+    "compileEnhancements": false,
     "files": [
       "tests/*-test.js"
     ],
-    "require": [
-      "esm"
-    ]
+    "presets": []
   },
   "xo": {
     "space": true

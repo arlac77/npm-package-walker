@@ -68,7 +68,6 @@ test("walk devDependencies", async t => {
   const expected = {
     "npm-package-walker": 0,
     ava: 1,
-    nyc: 1,
     rollup: 1,
     "markdown-doctest": 1,
     "semantic-release": 1,
