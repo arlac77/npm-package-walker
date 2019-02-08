@@ -36,7 +36,6 @@ test("walk devDependencies & dependencies", async t => {
   });
 
   t.is(names.has("npm-package-walker"), true);
-  t.is(names.has("rollup"), true);
 });
 
 test("walk dependencies", async t => {
@@ -68,11 +67,9 @@ test("walk devDependencies", async t => {
   const expected = {
     "npm-package-walker": 0,
     ava: 1,
-    rollup: 1,
     "markdown-doctest": 1,
     "semantic-release": 1,
     documentation: 1,
-    "travis-deploy-once": 1,
     glob: 2,
     camelcase: 2
   };

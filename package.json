@@ -4,8 +4,8 @@
   "publishConfig": {
     "access": "public"
   },
-  "main": "dist/package-walker.js",
-  "module": "src/package-walker.js",
+  "main": "src/package-walker.mjs",
+  "module": "src/package-walker.mjs",
   "description": "Walks down the local npm package dependency tree and calls a visitor function for each package",
   "keywords": [
     "dependecy"
@@ -19,9 +19,9 @@
   "license": "BSD-2-Clause",
   "scripts": {
     "cover": "c8 --temp-directory build/coverage ava && c8 report -r lcov --temp-directory build/coverage",
-    "docs": "documentation readme src/package-walker.js --section=API",
-    "lint": "documentation lint src/package-walker.js",
-    "posttest": "markdown-doctest && npm run prepare",
+    "docs": "documentation readme src/package-walker.mjs --section=API",
+    "lint": "documentation lint src/package-walker.mjs",
+    "posttest": "markdown-doctest",
     "test": "ava"
   },
   "dependencies": {},
