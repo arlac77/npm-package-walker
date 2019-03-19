@@ -7,11 +7,9 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/15cd579a3cc8090fb1d7/maintainability)](https://codeclimate.com/github/arlac77/npm-package-walker/maintainability)
 [![Known Vulnerabilities](https://snyk.io/test/github/arlac77/npm-package-walker/badge.svg)](https://snyk.io/test/github/arlac77/npm-package-walker)
 [![GitHub Issues](https://img.shields.io/github/issues/arlac77/npm-package-walker.svg?style=flat-square)](https://github.com/arlac77/npm-package-walker/issues)
-[![Stories in Ready](https://badge.waffle.io/arlac77/npm-package-walker.svg?label=ready&title=Ready)](http://waffle.io/arlac77/npm-package-walker)
 [![Dependency Status](https://david-dm.org/arlac77/npm-package-walker.svg)](https://david-dm.org/arlac77/npm-package-walker)
 [![devDependency Status](https://david-dm.org/arlac77/npm-package-walker/dev-status.svg)](https://david-dm.org/arlac77/npm-package-walker#info=devDependencies)
 [![docs](http://inch-ci.org/github/arlac77/npm-package-walker.svg?branch=master)](http://inch-ci.org/github/arlac77/npm-package-walker)
-[![XO code style](https://img.shields.io/badge/code_style-XO-5ed9c7.svg)](https://github.com/sindresorhus/xo)
 [![downloads](http://img.shields.io/npm/dm/npm-package-walker.svg?style=flat-square)](https://npmjs.org/package/npm-package-walker)
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 
