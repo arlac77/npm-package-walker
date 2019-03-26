@@ -1,9 +1,8 @@
 import { promisify } from "util";
 import { join } from "path";
-import { exists, readFile } from "fs";
+import fs, { exists } from "fs";
 
 const asyncExists = promisify(exists);
-const asyncReadFile = promisify(readFile);
 
 /**
  * dependency types used by default
@@ -64,7 +63,7 @@ export async function packageWalker(
       const pp = join(dir, "package.json");
 
       if (await asyncExists(pp)) {
-        const pkg = JSON.parse(await asyncReadFile(pp, { encoding: "utf8" }));
+        const pkg = JSON.parse(await fs.promises.readFile(pp, { encoding: "utf8" }));
 
         if (await visitor(pkg, dir, packagePath.length)) {
           return Promise.all(
