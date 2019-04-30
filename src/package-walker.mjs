@@ -22,7 +22,7 @@ export const defaultDependencyTypes = [
  * @callback packageVisitor
  * @param {Object} package package.json content
  * @param {string} directory package base dir
- * @param {number} nestingLevel how deep in the dependency tree are we
+ * @param {number} nestingLevel how deep in the dependency tree are we (starting with 0 for the root package)
  * @return {Promise<boolean>} true to continue traversing dependencies of this package
  */
 
