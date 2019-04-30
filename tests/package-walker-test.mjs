@@ -1,6 +1,6 @@
 import test from "ava";
 
-import { packageWalker } from "../src/package-walker";
+import { packageWalker } from "../src/package-walker.mjs";
 
 test("walk terminate early", async t => {
   const names = new Set();
