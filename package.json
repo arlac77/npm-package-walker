@@ -34,9 +34,7 @@
     "markdown-doctest": "^0.9.1",
     "semantic-release": "^15.13.21"
   },
-  "engines": {
-    "node": ">=10.16.2"
-  },
+  "engines": ">=10.16.3",
   "repository": {
     "type": "git",
     "url": "https://github.com/arlac77/npm-package-walker.git"
