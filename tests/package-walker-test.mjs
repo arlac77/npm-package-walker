@@ -9,8 +9,8 @@ test("walk terminate early", async t => {
     return false;
   });
 
-  t.is(names.has("npm-package-walker"), true);
-  t.is(names.has("rollup"), false);
+  t.true(names.has("npm-package-walker"));
+  t.false(names.has("rollup"));
 });
 
 test("walk with exception", async t => {
@@ -35,7 +35,7 @@ test("walk devDependencies & dependencies", async t => {
     return true;
   });
 
-  t.is(names.has("npm-package-walker"), true);
+  t.true(names.has("npm-package-walker"));
 });
 
 test("walk dependencies", async t => {
@@ -49,15 +49,15 @@ test("walk dependencies", async t => {
     ["dependencies"]
   );
 
-  t.is(names.has("npm-package-walker"), true);
-  t.is(names.has("rollup"), false);
+  t.true(names.has("npm-package-walker"));
+  t.false(names.has("rollup"));
 });
 
 test("walk devDependencies", async t => {
   const detected = new Map();
   await packageWalker(
-    async (pkg, base, level) => {
-      detected.set(pkg.name, level);
+    async (pkg, base, p) => {
+      detected.set(p.join(":"), pkg.name);
       return true;
     },
     process.cwd(),
@@ -65,16 +65,18 @@ test("walk devDependencies", async t => {
   );
 
   const expected = {
-    "npm-package-walker": 0,
-    ava: 1,
-    "markdown-doctest": 1,
-    "semantic-release": 1,
-    documentation: 1,
-    glob: 2,
-    camelcase: 2
+    "": {},
+    ava: {},
+    "markdown-doctest": {},
+    "semantic-release": {},
+    documentation: {},
+    "documentation:fsevents:glob": {},
+    "npm:camelcase": {}
   };
 
+  t.log(detected);
+
   Object.keys(expected).forEach(e => {
-    t.is(detected.get(e), expected[e], `${e}:${expected[e]}`);
+    t.true(detected.get(e) !== undefined, `${e}`);
   });
 });

@@ -27,7 +27,7 @@ async function collectPackageNames() {
   const names = new Set();
 
   await packageWalker(
-    async (pkg, base, level) => {
+    async (pkg, base, modulePath) => {
       names.add(pkg.name);
       return true;
     },
@@ -70,7 +70,7 @@ Type: [Function](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Sta
 
 -   `package` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** package.json content
 -   `directory` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** package base dir
--   `nestingLevel` **[number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** how deep in the dependency tree are we (starting with 0 for the root package)
+-   `packagePath` **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)>** how deep in the dependency tree are we (starting with 0 for the root package)
 
 Returns **[Promise](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)&lt;[boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean)>** true to continue traversing dependencies of this package
 

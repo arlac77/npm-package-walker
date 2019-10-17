@@ -1,8 +1,6 @@
-import { promisify } from "util";
 import { join } from "path";
 import fs from "fs";
 
-const exists = fs.promises.exists;
 const readFile = fs.promises.readFile;
 
 /**
@@ -23,7 +21,7 @@ export const defaultDependencyTypes = [
  * @callback packageVisitor
  * @param {Object} package package.json content
  * @param {string} directory package base dir
- * @param {number} nestingLevel how deep in the dependency tree are we (starting with 0 for the root package)
+ * @param {string[]} packagePath how deep in the dependency tree are we (starting with 0 for the root package)
  * @return {Promise<boolean>} true to continue traversing dependencies of this package
  */
 
@@ -44,13 +42,6 @@ export async function packageWalker(
 ) {
   const seenBefore = new Set();
 
-  function modulePath(packagePath) {
-    return packagePath.reduce((acc, cur) => {
-      acc.push("node_modules", cur);
-      return acc;
-    }, []);
-  }
-
   async function walker(packagePath) {
     while (true) {
       const dir = join(base, ...modulePath(packagePath));
@@ -61,12 +52,11 @@ export async function packageWalker(
 
       seenBefore.add(dir);
 
-      const pp = join(dir, "package.json");
-
-      if (await exists(pp)) {
+      try {
+        const pp = join(dir, "package.json");
         const pkg = JSON.parse(await readFile(pp, { encoding: "utf8" }));
 
-        if (await visitor(pkg, dir, packagePath.length)) {
+        if (await visitor(pkg, dir, packagePath)) {
           return Promise.all(
             (packagePath.length > 0 ? ["dependencies"] : dependencyTypes)
               .map(dt => (pkg[dt] ? Object.keys(pkg[dt]) : []))
@@ -80,8 +70,22 @@ export async function packageWalker(
 
         return;
       }
+      catch(e) {
+        if(e.code !== 'ENOENT') {
+          throw e;
+        }
+      }
+
       packagePath.splice(packagePath.length - 2, 1);
     }
   }
   return walker([]);
+}
+
+
+function modulePath(packagePath) {
+  return packagePath.reduce((acc, cur) => {
+    acc.push("node_modules", cur);
+    return acc;
+  }, []);
 }
