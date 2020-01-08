@@ -24,7 +24,8 @@
     "docs": "documentation readme src/package-walker.mjs --section=API",
     "lint": "documentation lint src/package-walker.mjs",
     "posttest": "markdown-doctest",
-    "test": "ava"
+    "test": "ava",
+    "prepare": "rollup -c"
   },
   "devDependencies": {
     "ava": "^2.4.0",
