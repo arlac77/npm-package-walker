@@ -1,0 +1,10 @@
+{
+  "name": "npm-package-walker",
+  "description": "Walks down the local npm package dependency tree and calls a visitor function for each package",
+  "icons": [
+    {
+      "src": "facicon.ico",
+      "sizes": "16x16"
+    }
+  ]
+}
