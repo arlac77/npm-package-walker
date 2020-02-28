@@ -43,9 +43,9 @@
   },
   "homepage": "https://github.com/arlac77/npm-package-walker#readme",
   "template": {
-    "files": [
+    "mergers": [
       {
-        "merger": "Readme",
+        "type": "Readme",
         "options": {
           "badges": {
             "Maintainability": {
