@@ -8,7 +8,7 @@
   "type": "module",
   "main": "src/package-walker.mjs",
   "exports": {
-    ".": "./src/package-walker.mjs",
+    ".": "src/package-walker.mjs",
     "./": "./"
   },
   "description": "Walks down the local npm package dependency tree and calls a visitor function for each package",
