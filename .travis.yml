@@ -3,13 +3,12 @@ jobs:
   include:
     - stage: test
       node_js:
-        - 14.8.0
+        - 14.13.0
       script:
         - npm run cover
         - cat ./build/coverage/lcov.info | npx coveralls
     - stage: doc
       node_js: lts/*
-      skip_cleanup: 'true'
       script:
         - npm run lint
         - npm run docs
