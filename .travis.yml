@@ -1,3 +1,4 @@
+[![Maintainability](undefined)](undefined)
 language: node_js
 jobs:
   include:
