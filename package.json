@@ -49,11 +49,12 @@
       {
         "type": "Readme",
         "options": {
-          "badges": {
-            "Maintainability": {
+          "badges": [
+            {
+              "name": "Maintainability",
               "id": "15cd579a3cc8090fb1d7"
             }
-          }
+          ]
         }
       }
     ],
