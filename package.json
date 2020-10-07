@@ -6,7 +6,7 @@
   },
   "sideEffects": false,
   "type": "module",
-  "main": "src/package-walker.mjs",
+  "main": "./src/package-walker.mjs",
   "exports": {
     ".": "src/package-walker.mjs"
   },
