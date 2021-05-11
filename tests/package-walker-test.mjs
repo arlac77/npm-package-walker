@@ -1,6 +1,5 @@
 import test from "ava";
-
-import { packageWalker } from "../src/package-walker.mjs";
+import { packageWalker } from "npm-package-walker";
 
 test("walk terminate early", async t => {
   const names = new Set();
@@ -23,7 +22,7 @@ test("walk with exception", async t => {
         throw new Error(`something went wrong`);
         return false;
       }),
-    Error,
+    undefined,
     "something went wrong"
   );
 });
@@ -67,14 +66,11 @@ test("walk devDependencies", async t => {
   const expected = {
     "": {},
     ava: {},
-    "markdown-doctest": {},
     "semantic-release": {},
     documentation: {},
-    "documentation:fsevents:glob": {},
-    "npm:camelcase": {}
   };
 
-  t.log(detected);
+  //t.log(detected);
 
   Object.keys(expected).forEach(e => {
     t.true(detected.get(e) !== undefined, `${e}`);
