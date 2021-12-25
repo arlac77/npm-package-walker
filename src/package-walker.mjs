@@ -1,7 +1,5 @@
 import { join } from "path";
-import fs from "fs";
-
-const readFile = fs.promises.readFile;
+import { readFile } from "fs/promises";
 
 /**
  * dependency types used by default
