@@ -2,7 +2,7 @@ import { join } from "path";
 import { readFile } from "fs/promises";
 
 /**
- * dependency types used by default
+ * Dependency types used by default
  * - dependencies
  * - devDependencies
  * - optionalDependencies
