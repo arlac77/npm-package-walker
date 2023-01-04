@@ -42,7 +42,7 @@ collectPackageNames().then(names => console.log(names));
 
 ## defaultDependencyTypes
 
-dependency types used by default
+Dependency types used by default
 
 *   dependencies
 *   devDependencies
