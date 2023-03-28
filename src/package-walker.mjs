@@ -1,5 +1,5 @@
-import { join } from "path";
-import { readFile } from "fs/promises";
+import { join } from "node:path";
+import { readFile } from "node:fs/promises";
 
 /**
  * Dependency types used by default
@@ -79,7 +79,6 @@ export async function packageWalker(
   }
   return walker([]);
 }
-
 
 function modulePath(packagePath) {
   return packagePath.reduce((acc, cur) => {
