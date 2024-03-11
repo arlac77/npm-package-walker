@@ -6,7 +6,9 @@
     "provenance": true
   },
   "exports": {
-    ".": "./src/package-walker.mjs"
+    ".": {
+      "default": "./src/package-walker.mjs"
+    }
   },
   "description": "Walks down the local npm package dependency tree and calls a visitor function for each package",
   "keywords": [
@@ -20,18 +22,22 @@
   ],
   "license": "BSD-2-Clause",
   "scripts": {
+    "prepare": "npm run prepare:typescript",
+    "prepare:typescript": "tsc --allowJs --declaration --emitDeclarationOnly --declarationDir types --resolveJsonModule -t esnext -m esnext --module nodenext --moduleResolution nodenext --rootDir src ./src**/*.mjs",
     "test": "npm run test:ava",
     "test:ava": "ava --timeout 4m tests/*-ava.mjs tests/*-ava-node.mjs",
     "cover": "c8 -x 'tests/**/*' --temp-directory build/tmp ava --timeout 4m tests/*-ava.mjs tests/*-ava-node.mjs && c8 report -r lcov -o build/coverage --temp-directory build/tmp",
     "docs": "documentation readme --section=API ./src/**/*.mjs",
-    "lint": "npm run lint:docs",
-    "lint:docs": "documentation lint ./src/**/*.mjs"
+    "lint": "npm run lint:docs && npm run lint:typescript",
+    "lint:docs": "documentation lint ./src/**/*.mjs",
+    "lint:typescript": "tsc --allowJs --checkJs --noEmit --resolveJsonModule -t esnext -m esnext --module nodenext --moduleResolution nodenext ./src**/*.mjs"
   },
   "devDependencies": {
     "ava": "^6.1.2",
     "c8": "^9.1.0",
     "documentation": "^14.0.3",
-    "semantic-release": "^23.0.2"
+    "semantic-release": "^23.0.2",
+    "typescript": "^5.4.2"
   },
   "engines": {
     "node": ">=16.20.2"
@@ -60,7 +66,8 @@
     ],
     "inheritFrom": [
       "arlac77/template-arlac77-github",
-      "arlac77/template-javascript-component"
+      "arlac77/template-javascript-component",
+      "arlac77/template-typescript"
     ]
   }
 }
