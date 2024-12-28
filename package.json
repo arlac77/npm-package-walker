@@ -8,8 +8,8 @@
   "types": "./types/package-walker.d.mts",
   "exports": {
     ".": {
-      "default": "./src/package-walker.mjs",
-      "types": "./types/package-walker.d.mts"
+      "types": "./types/package-walker.d.mts",
+      "default": "./src/package-walker.mjs"
     }
   },
   "description": "Walks down the local npm package dependency tree and calls a visitor function for each package",
