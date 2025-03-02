@@ -52,7 +52,7 @@ export async function packageWalker(
 
       try {
         const pp = join(dir, "package.json");
-        const pkg = JSON.parse(await readFile(pp, { encoding: "utf8" }));
+        const pkg = JSON.parse(await readFile(pp, "utf8"));
 
         if (await visitor(pkg, dir, packagePath)) {
           return Promise.all(
